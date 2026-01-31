@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Old Town Food - Fresh Food, Anytime</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Poppins:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    .font-display {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .font-body {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .nav-link {
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #f97316;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+    
+    .menu-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .menu-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    
+    .hero-gradient {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    }
+    
+    .glow-text {
+      text-shadow: 0 0 40px rgba(249, 115, 22, 0.3);
+    }
+    
+    .floating {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .pattern-bg {
+      background-image: radial-gradient(circle at 2px 2px, rgba(249,115,22,0.1) 1px, transparent 0);
+      background-size: 40px 40px;
+    }
+    
+    .scroll-smooth {
+      scroll-behavior: smooth;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-body bg-slate-950 text-white overflow-auto scroll-smooth">
+  <div id="app" class="w-full h-full"><!-- Navigation -->
+   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="flex items-center justify-between h-16 sm:h-20">
+      <div class="flex items-center gap-3">
+       <img src="logo.png" alt="Old Town Food" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover">
+       <div>
+        <h1 id="nav-name" class="font-display text-lg sm:text-xl font-bold text-white">Old Town Food</h1>
+        <p class="text-xs text-orange-400 hidden sm:block">Fresh Food, Anytime</p>
+       </div>
+      </img><!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-8"><a href="#home" class="nav-link text-sm font-medium text-slate-300 hover:text-white active">Home</a> <a href="#about" class="nav-link text-sm font-medium text-slate-300 hover:text-white">About</a> <a href="#menu" class="nav-link text-sm font-medium text-slate-300 hover:text-white">Menu</a> <a href="#gallery" class="nav-link text-sm font-medium text-slate-300 hover:text-white">Gallery</a> <a href="#reviews" class="nav-link text-sm font-medium text-slate-300 hover:text-white">Reviews</a> <a href="#location" class="nav-link text-sm font-medium text-slate-300 hover:text-white">Location</a>
+      </div><!-- Mobile Menu Button --> <button id="mobile-menu-btn" class="md:hidden p-2 text-white">
+       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+       </svg></button>
+     </div>
+    </div><!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-800 border-t border-slate-700">
+     <div class="px-4 py-4 space-y-3"><a href="#home" class="block py-2 text-slate-300 hover:text-orange-400">Home</a> <a href="#about" class="block py-2 text-slate-300 hover:text-orange-400">About</a> <a href="#menu" class="block py-2 text-slate-300 hover:text-orange-400">Menu</a> <a href="#gallery" class="block py-2 text-slate-300 hover:text-orange-400">Gallery</a> <a href="#reviews" class="block py-2 text-slate-300 hover:text-orange-400">Reviews</a> <a href="#location" class="block py-2 text-slate-300 hover:text-orange-400">Location</a>
+     </div>
+    </div>
+   </nav><!-- Hero Section -->
+   <section id="home" class="hero-gradient min-h-screen flex items-center pt-20 relative overflow-hidden">
+    <div class="absolute inset-0 pattern-bg"></div>
+    <div class="absolute top-20 right-10 text-8xl opacity-20 floating">
+     🍜
+    </div>
+    <div class="absolute bottom-20 left-10 text-6xl opacity-20 floating" style="animation-delay: 1s;">
+     🍕
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+     <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="text-center lg:text-left">
+       <div class="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-500/30 rounded-full px-4 py-2 mb-6"><span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span> <span class="text-sm text-orange-300">Open Now • Late Night Available</span>
+       </div>
+       <h1 id="hero-title" class="font-display text-5xl sm:text-6xl lg:text-7xl font-bold mb-4 leading-tight glow-text">Old Town Food</h1>
+       <p id="hero-tagline" class="text-lg sm:text-xl text-orange-400 font-semibold mb-6">Premium Late-Night Dining Experience</p>
+       <p class="text-slate-300 text-lg mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">Serving authentic Nepali, Indian &amp; international cuisine in Bhaktapur. Fresh ingredients, fast delivery, anytime you need us.</p>
+       <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"><a href="https://wa.me/9779808210435" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-semibold transition-all"> <span>💬</span> <span>WhatsApp Order</span> </a> <a href="tel:+9779808210435" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg hover:shadow-orange-500/30 transition-all"> <span>📞</span> <span>Call Now</span> </a>
+       </div>
+      </div>
+      <div class="relative">
+       <div class="relative w-64 h-64 sm:w-80 sm:h-80 mx-auto">
+        <div class="absolute inset-0 bg-gradient-to-br from-orange-500 to-red-600 rounded-full blur-3xl opacity-30"></div>
+        <div class="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-full w-full h-full flex items-center justify-center border-4 border-orange-500/30">
+         <div class="text-center">
+          <div class="text-6xl sm:text-7xl mb-2">
+           🍛
+          </div>
+          <p class="text-orange-400 font-medium">Authentic Taste</p>
+         </div>
+        </div>
+       </div><!-- Floating Food Icons -->
+       <div class="absolute top-0 right-0 bg-slate-800 rounded-2xl p-4 shadow-xl floating"><span class="text-3xl">🍕</span>
+       </div>
+       <div class="absolute bottom-10 left-0 bg-slate-800 rounded-2xl p-4 shadow-xl floating" style="animation-delay: 0.5s;"><span class="text-3xl">🥟</span>
+       </div>
+       <div class="absolute bottom-0 right-10 bg-slate-800 rounded-2xl p-4 shadow-xl floating" style="animation-delay: 1s;"><span class="text-3xl">🍔</span>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- About Section -->
+   <section id="about" class="py-20 bg-slate-800 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-16"><span class="inline-block text-orange-400 font-medium mb-2">ABOUT US</span>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4">Who We Are</h2>
+      <div class="w-20 h-1 bg-gradient-to-r from-orange-500 to-red-600 mx-auto rounded-full"></div>
+     </div>
+     <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+       <p class="text-slate-300 text-lg leading-relaxed mb-6">Old Town Food is a premium local restaurant in Changunarayan, Bhaktapur, specializing in authentic Nepali, Indian, and international dishes with dedicated late-night service.</p>
+       <p class="text-slate-300 text-lg leading-relaxed mb-8">Whether you're returning home late from work, enjoying a night shift break, or craving comfort food after hours—Old Town Food delivers quality, hygiene, and taste every time.</p>
+       <div class="bg-slate-900/50 rounded-2xl p-6 border border-slate-700">
+        <h3 class="font-display text-xl font-bold mb-4 text-orange-400">Our Mission</h3>
+        <ul class="space-y-3">
+         <li class="flex items-center gap-3 text-slate-300"><span class="text-green-400">✓</span> Serve fresh, tasty, and hygienic food</li>
+         <li class="flex items-center gap-3 text-slate-300"><span class="text-green-400">✓</span> Provide fast and reliable delivery</li>
+         <li class="flex items-center gap-3 text-slate-300"><span class="text-green-400">✓</span> Offer affordable prices</li>
+         <li class="flex items-center gap-3 text-slate-300"><span class="text-green-400">✓</span> Create a welcoming space for everyone</li>
+        </ul>
+       </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+       <div class="bg-gradient-to-br from-orange-500/20 to-red-600/20 rounded-2xl p-6 text-center border border-orange-500/30">
+        <div class="text-4xl mb-3">
+         🌙
+        </div>
+        <h4 class="font-semibold text-white mb-1">Late Night</h4>
+        <p class="text-sm text-slate-400">Food availability</p>
+       </div>
+       <div class="bg-gradient-to-br from-blue-500/20 to-purple-600/20 rounded-2xl p-6 text-center border border-blue-500/30">
+        <div class="text-4xl mb-3">
+         🚀
+        </div>
+        <h4 class="font-semibold text-white mb-1">Fast Delivery</h4>
+        <p class="text-sm text-slate-400">Quick to your door</p>
+       </div>
+       <div class="bg-gradient-to-br from-green-500/20 to-teal-600/20 rounded-2xl p-6 text-center border border-green-500/30">
+        <div class="text-4xl mb-3">
+         ✨
+        </div>
+        <h4 class="font-semibold text-white mb-1">Clean Kitchen</h4>
+        <p class="text-sm text-slate-400">Hygienic preparation</p>
+       </div>
+       <div class="bg-gradient-to-br from-pink-500/20 to-rose-600/20 rounded-2xl p-6 text-center border border-pink-500/30">
+        <div class="text-4xl mb-3">
+         💝
+        </div>
+        <h4 class="font-semibold text-white mb-1">Friendly Service</h4>
+        <p class="text-sm text-slate-400">Warm hospitality</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Menu Section -->
+   <section id="menu" class="py-20 bg-slate-900 relative">
+    <div class="absolute inset-0 pattern-bg opacity-50"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+     <div class="text-center mb-16"><span class="inline-block text-orange-400 font-medium mb-2">OUR MENU</span>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4">Freshly Prepared, Delicious Food</h2>
+      <div class="w-20 h-1 bg-gradient-to-r from-orange-500 to-red-600 mx-auto rounded-full"></div>
+     </div><!-- Menu Categories -->
+     <div class="flex flex-wrap justify-center gap-3 mb-12" id="menu-tabs"><button class="menu-tab active px-5 py-2 rounded-full text-sm font-medium bg-orange-500 text-white transition-all" data-category="all">All</button> <button class="menu-tab px-5 py-2 rounded-full text-sm font-medium bg-slate-800 text-slate-300 hover:bg-orange-500 hover:text-white transition-all" data-category="nepali">Nepali &amp; Indian</button> <button class="menu-tab px-5 py-2 rounded-full text-sm font-medium bg-slate-800 text-slate-300 hover:bg-orange-500 hover:text-white transition-all" data-category="snacks">Snacks</button> <button class="menu-tab px-5 py-2 rounded-full text-sm font-medium bg-slate-800 text-slate-300 hover:bg-orange-500 hover:text-white transition-all" data-category="pizza">Pizza</button> <button class="menu-tab px-5 py-2 rounded-full text-sm font-medium bg-slate-800 text-slate-300 hover:bg-orange-500 hover:text-white transition-all" data-category="burgers">Burgers</button> <button class="menu-tab px-5 py-2 rounded-full text-sm font-medium bg-slate-800 text-slate-300 hover:bg-orange-500 hover:text-white transition-all" data-category="drinks">Drinks</button> <button class="menu-tab px-5 py-2 rounded-full text-sm font-medium bg-slate-800 text-slate-300 hover:bg-orange-500 hover:text-white transition-all" data-category="biryani">Biryani</button>
+     </div><!-- Menu Grid -->
+     <div id="menu-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"><!-- Menu items will be rendered by JavaScript -->
+
+     </div>
+    </div>
+   </section><!-- Gallery Section -->
+   <section id="gallery" class="py-20 bg-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-16"><span class="inline-block text-orange-400 font-medium mb-2">GALLERY</span>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4">Our Food &amp; Space</h2>
+      <div class="w-20 h-1 bg-gradient-to-r from-orange-500 to-red-600 mx-auto rounded-full"></div>
+     </div>
+     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"><!-- Gallery Items -->
+      <div class="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer bg-slate-700">
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fthumbnails%2F029%2F315%2F075%2Fsmall_2x%2Findian-feast-chicken-thali-with-fried-chicken-egg-curry-lentils-biryani-roti-and-select-onions-ai-generated-photo.jpg&f=1&nofb=1&ipt=b9cdecfa304525ea5ddae0b323d6e6590c294cd7dea9a1f0dc456a389a700dd0" alt="Chicken Thali" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-end">
+          <div class="p-4 text-white w-full text-sm font-medium">Chicken Thali</div>
+        </div>
+      </div>
+      <div class="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer bg-slate-700">
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.thedailymeal.com%2Fimg%2Fgallery%2Fwhat-makes-nepalese-momo-unique%2Fintro-1671505255.jpg&f=1&nofb=1&ipt=2999e494b3b0bf0e6c92fd78ab892dc74e8e8f05f79cfc9ced54f2eba0cbd4f5" alt="Momo" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-end">
+          <div class="p-4 text-white w-full text-sm font-medium">Fresh Momo</div>
+        </div>
+      </div>
+      <div class="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer bg-slate-700">
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Frecipesblob.oetker.in%2Fassets%2F2d2a87f7533e439aa3e6ed9bd63656e7%2F1272x764%2Ftandoori-pizza.jpg&f=1&nofb=1&ipt=0da5f65a52256b4ae04542e45328928f9d7d95db822499f69cda30c3a3f323de" alt="Hot Pizza" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-end">
+          <div class="p-4 text-white w-full text-sm font-medium">Hot Pizza</div>
+        </div>
+      </div>
+      <div class="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer bg-slate-700">
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fflavor-feed.com%2Fwp-content%2Fuploads%2F2024%2F06%2FUntitled-design-2024-06-26T190743.306-1024x1024.jpg&f=1&nofb=1&ipt=02bfdc7ebcba74ee51f8b0b8e4712ef3e311f6ef33b439f277b35533c0995768" alt="Juicy Burger" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-end">
+          <div class="p-4 text-white w-full text-sm font-medium">Juicy Burger</div>
+        </div>
+      </div>
+      <div class="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer bg-slate-700">
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Frecipstep.com%2Fwp-content%2Fuploads%2F2024%2F05%2FDesign-sans-titre-25-1.webp&f=1&nofb=1&ipt=e2c6fc4ac5f17bdfe145e5d4f8e9ecb11a9b2f995b8bc3e787f104aa445a5dd9" alt="Chowmein" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-end">
+          <div class="p-4 text-white w-full text-sm font-medium">Chowmein</div>
+        </div>
+      </div>
+      <div class="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer bg-slate-700">
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F2a%2Fc4%2F77%2F2ac477bc2708882901461560be69b9ab.jpg&f=1&nofb=1&ipt=863919a0a2290121d6346ea9d8cdf9716307e51efa36efad1c6819144116b93e" alt="Fresh Drinks" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-end">
+          <div class="p-4 text-white w-full text-sm font-medium">Fresh Drinks</div>
+        </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Reviews Section -->
+   <section id="reviews" class="py-20 bg-slate-900 relative">
+    <div class="absolute inset-0 pattern-bg opacity-30"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+     <div class="text-center mb-16"><span class="inline-block text-orange-400 font-medium mb-2">REVIEWS</span>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4">What Our Customers Say</h2>
+      <div class="w-20 h-1 bg-gradient-to-r from-orange-500 to-red-600 mx-auto rounded-full"></div>
+     </div>
+     <div class="grid md:grid-cols-3 gap-8"><!-- Review 1 -->
+      <div class="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 hover:border-orange-500/50 transition-colors">
+       <div class="flex gap-1 mb-4"><span class="text-yellow-400 text-xl">★</span> <span class="text-yellow-400 text-xl">★</span> <span class="text-yellow-400 text-xl">★</span> <span class="text-yellow-400 text-xl">★</span> <span class="text-yellow-400 text-xl">★</span>
+       </div>
+       <p class="text-slate-300 mb-6 italic">"Best late-night food in Bhaktapur. Their momo and biryani are amazing. Always fresh and hot!"</p>
+       <div class="flex items-center gap-3">
+        <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center text-xl">
+         👤
+        </div>
+        <div>
+         <p class="font-medium text-white">Happy Customer</p>
+         <p class="text-sm text-slate-400">Regular Visitor</p>
+        </div>
+       </div>
+      </div><!-- Review 2 -->
+      <div class="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 hover:border-orange-500/50 transition-colors">
+       <div class="flex gap-1 mb-4"><span class="text-yellow-400 text-xl">★</span> <span class="text-yellow-400 text-xl">★</span> <span class="text-yellow-400 text-xl">★</span> <span class="text-yellow-400 text-xl">★</span> <span class="text-slate-600 text-xl">★</span>
+       </div>
+       <p class="text-slate-300 mb-6 italic">"Fast delivery and good quality food. Pizza is very good. Will definitely order again!"</p>
+       <div class="flex items-center gap-3">
+        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-xl">
+         👤
+        </div>
+        <div>
+         <p class="font-medium text-white">Satisfied Customer</p>
+         <p class="text-sm text-slate-400">Delivery Order</p>
+        </div>
+       </div>
+      </div><!-- Review 3 -->
+      <div class="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 hover:border-orange-500/50 transition-colors">
+       <div class="flex gap-1 mb-4"><span class="text-yellow-400 text-xl">★</span> <span class="text-yellow-400 text-xl">★</span> <span class="text-yellow-400 text-xl">★</span> <span class="text-yellow-400 text-xl">★</span> <span class="text-yellow-400 text-xl">★</span>
+       </div>
+       <p class="text-slate-300 mb-6 italic">"Clean place, friendly staff, and affordable prices. Perfect for family dinners!"</p>
+       <div class="flex items-center gap-3">
+        <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center text-xl">
+         👤
+        </div>
+        <div>
+         <p class="font-medium text-white">Family Diner</p>
+         <p class="text-sm text-slate-400">Dine-in Customer</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Location Section -->
+   <section id="location" class="py-20 bg-slate-900 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-16"><span class="inline-block text-orange-400 font-medium mb-2">FIND US</span>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4">Our Location</h2>
+      <div class="w-20 h-1 bg-gradient-to-r from-orange-500 to-red-600 mx-auto rounded-full"></div>
+     </div>
+     <div class="grid lg:grid-cols-2 gap-8 items-center">
+      <div class="bg-slate-800/50 rounded-2xl p-8 border border-slate-700">
+       <h3 class="text-xl font-semibold text-orange-400 mb-4">📍 Address</h3>
+       <p class="text-slate-300 text-lg mb-6">2 Sallaghari–Duwakot Road, Changunarayan 44800, Bhaktapur, Nepal</p>
+       <p class="text-slate-400 text-sm mb-6">Easily accessible from Sallaghari, Duwakot, Suryabinayak, and nearby areas.</p>
+       <a href="https://maps.app.goo.gl/r8z6H496AntsKwyN6" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg hover:shadow-orange-500/30 transition-all">
+         📍 Open in Google Maps
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></path></svg>
+       </a>
+      </div>
+      <div class="rounded-2xl overflow-hidden border border-slate-700 aspect-video shadow-xl">
+        <iframe
+          src="https://www.google.com/maps?q=Sallaghari-Duwakot+Road,+Changunarayan+Bhaktapur+Nepal&output=embed"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="bg-slate-900 border-t border-slate-800 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="grid md:grid-cols-3 gap-8 mb-8">
+      <div>
+       <div class="flex items-center gap-3 mb-4">
+        <img src="logo.png" alt="Old Town Food" class="w-10 h-10 rounded-full object-cover"><span id="footer-name" class="font-display text-xl font-bold">Old Town Food</span>
+       </div>
+       <p class="text-slate-400 text-sm">Your favorite late-night food destination in Changunarayan, Bhaktapur.</p>
+      </div>
+      <div>
+       <h4 class="font-semibold text-white mb-4">Quick Links</h4>
+       <div class="space-y-2"><a href="#home" class="block text-slate-400 hover:text-orange-400 transition-colors text-sm">Home</a> <a href="#menu" class="block text-slate-400 hover:text-orange-400 transition-colors text-sm">Menu</a> <a href="#location" class="block text-slate-400 hover:text-orange-400 transition-colors text-sm">Location</a>
+       </div>
+      </div>
+      <div>
+       <h4 class="font-semibold text-white mb-4">Why Choose Us</h4>
+       <div class="space-y-2 text-sm text-slate-400">
+        <p>✓ Late Night Available</p>
+        <p>✓ Fast Delivery</p>
+        <p>✓ Fresh &amp; Hygienic</p>
+        <p>✓ Affordable Prices</p>
+       </div>
+      </div>
+     </div>
+     <div class="border-t border-slate-800 pt-8 text-center">
+      <p class="text-slate-400 text-sm">© 2024 Old Town Food. All rights reserved. Made with ❤️ in Bhaktapur</p>
+     </div>
+    </div>
+   </footer><!-- Toast Notification -->
+   <div id="toast" class="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-xl shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+    <div class="flex items-center gap-2"><span>✓</span> <span id="toast-message">Order submitted successfully!</span>
+    </div>
+   </div>
+  </div>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      restaurant_name: 'Old Town Food',
+      tagline: 'Fresh Food, Anytime',
+      phone_number: '+977 9808210435',
+      address: '2 Sallaghari–Duwakot Road, Changunarayan 44800, Bhaktapur, Nepal',
+      primary_color: '#f97316',
+      secondary_color: '#1e293b',
+      text_color: '#ffffff',
+      accent_color: '#ea580c',
+      background_color: '#0f172a'
+    };
+
+    // Menu data
+    const menuItems = [
+      { name: 'Chicken Thali Set', emoji: '🍛', category: 'nepali' },
+      { name: 'Veg Thali Set', emoji: '🥗', category: 'nepali' },
+      { name: 'Chicken Curry', emoji: '🍲', category: 'nepali' },
+      { name: 'Butter Chicken', emoji: '🍗', category: 'nepali' },
+      { name: 'Dal Fry', emoji: '🥘', category: 'nepali' },
+      { name: 'Paneer Masala', emoji: '🧀', category: 'nepali' },
+      { name: 'Egg Curry', emoji: '🥚', category: 'nepali' },
+      { name: 'Chicken Momo', emoji: '🥟', category: 'snacks' },
+      { name: 'Veg Momo', emoji: '🥟', category: 'snacks' },
+      { name: 'Chowmein', emoji: '🍜', category: 'snacks' },
+      { name: 'Fried Rice', emoji: '🍚', category: 'snacks' },
+      { name: 'Spring Rolls', emoji: '🥢', category: 'snacks' },
+      { name: 'Sausage Fry', emoji: '🌭', category: 'snacks' },
+      { name: 'French Fries', emoji: '🍟', category: 'snacks' },
+      { name: 'Chicken Pizza', emoji: '🍕', category: 'pizza' },
+      { name: 'Veg Pizza', emoji: '🍕', category: 'pizza' },
+      { name: 'Cheese Pizza', emoji: '🍕', category: 'pizza' },
+      { name: 'Garlic Bread', emoji: '🥖', category: 'pizza' },
+      { name: 'Chicken Burger', emoji: '🍔', category: 'burgers' },
+      { name: 'Veg Burger', emoji: '🍔', category: 'burgers' },
+      { name: 'Egg Roll', emoji: '🌯', category: 'burgers' },
+      { name: 'Chicken Wrap', emoji: '🌯', category: 'burgers' },
+      { name: 'Coffee', emoji: '☕', category: 'drinks' },
+      { name: 'Milk Tea', emoji: '🍵', category: 'drinks' },
+      { name: 'Cold Drinks', emoji: '🥤', category: 'drinks' },
+      { name: 'Fresh Juice', emoji: '🧃', category: 'drinks' },
+      { name: 'Lassi', emoji: '🥛', category: 'drinks' },
+      { name: 'Chicken Biryani', emoji: '🍛', category: 'biryani' },
+      { name: 'Veg Biryani', emoji: '🍛', category: 'biryani' },
+      { name: 'Egg Fried Rice', emoji: '🍳', category: 'biryani' },
+      { name: 'Chicken Fried Rice', emoji: '🍚', category: 'biryani' }
+    ];
+
+    let currentCategory = 'all';
+
+    // Render menu items
+    function renderMenu(category = 'all') {
+      const grid = document.getElementById('menu-grid');
+      const filteredItems = category === 'all' 
+        ? menuItems 
+        : menuItems.filter(item => item.category === category);
+      
+      grid.innerHTML = filteredItems.map(item => `
+        <div class="menu-card bg-slate-800/50 rounded-2xl p-6 border border-slate-700 hover:border-orange-500/50 cursor-pointer" data-category="${item.category}">
+          <div class="text-5xl mb-4 text-center">${item.emoji}</div>
+          <h3 class="font-medium text-white text-center">${item.name}</h3>
+        </div>
+      `).join('');
+    }
+
+    // Menu tab functionality
+    document.getElementById('menu-tabs').addEventListener('click', (e) => {
+      if (e.target.classList.contains('menu-tab')) {
+        document.querySelectorAll('.menu-tab').forEach(tab => {
+          tab.classList.remove('bg-orange-500', 'text-white');
+          tab.classList.add('bg-slate-800', 'text-slate-300');
+        });
+        e.target.classList.remove('bg-slate-800', 'text-slate-300');
+        e.target.classList.add('bg-orange-500', 'text-white');
+        currentCategory = e.target.dataset.category;
+        renderMenu(currentCategory);
+      }
+    });
+
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobile-menu').classList.add('hidden');
+      });
+    });
+
+    // Form submission
+    document.getElementById('order-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      showToast('Order request submitted! We will contact you shortly.');
+      e.target.reset();
+    });
+
+    // Toast notification
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-message').textContent = message;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3000);
+    }
+
+    // Apply configuration to UI
+    async function onConfigChange(config) {
+      const name = config.restaurant_name || defaultConfig.restaurant_name;
+      const tagline = config.tagline || defaultConfig.tagline;
+      const phone = config.phone_number || defaultConfig.phone_number;
+      const address = config.address || defaultConfig.address;
+      
+      // Update text content
+      document.getElementById('nav-name').textContent = name;
+      document.getElementById('hero-title').textContent = name;
+      document.getElementById('hero-tagline').textContent = tagline;
+      document.getElementById('footer-name').textContent = name;
+      document.getElementById('contact-phone').textContent = phone;
+      document.getElementById('contact-address').textContent = address;
+      document.getElementById('order-phone').textContent = phone !== 'Contact us' ? phone : 'Call or WhatsApp Now';
+    }
+
+    // Initialize Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => window.elementSdk.setConfig({ background_color: value })
+            },
+            {
+              get: () => config.secondary_color || defaultConfig.secondary_color,
+              set: (value) => window.elementSdk.setConfig({ secondary_color: value })
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => window.elementSdk.setConfig({ text_color: value })
+            },
+            {
+              get: () => config.primary_color || defaultConfig.primary_color,
+              set: (value) => window.elementSdk.setConfig({ primary_color: value })
+            },
+            {
+              get: () => config.accent_color || defaultConfig.accent_color,
+              set: (value) => window.elementSdk.setConfig({ accent_color: value })
+            }
+          ],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['restaurant_name', config.restaurant_name || defaultConfig.restaurant_name],
+          ['tagline', config.tagline || defaultConfig.tagline],
+          ['phone_number', config.phone_number || defaultConfig.phone_number],
+          ['address', config.address || defaultConfig.address]
+        ])
+      });
+    }
+
+    // Initial render
+    renderMenu();
+    onConfigChange(defaultConfig);
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c64b9bd70d6bd45',t:'MTc2OTgxNTQ5NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
